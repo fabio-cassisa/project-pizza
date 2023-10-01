@@ -14,4 +14,4 @@ I feel with more time, I'd love to find ways to have cleaner and shorter code, w
 
 ## View it live
 
--- link to Netfliy
+-- link to Netfliy: https://project-pizzeria-fabio.netlify.app/
