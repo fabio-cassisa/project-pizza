@@ -44,14 +44,10 @@ switch(orderType) {
     selectedType = ["Salad", "Greek Salad", "Protein Salad", "Tuna Salad", "7 min"];
     break;
   default:
-    orderType = prompt(`Re-enter a valid number:
-    Pizza (1) 
-    Pasta (2)
-    Salad (3):`);
     // Adding it again, to prevent clicking "cancel" or not selecting an order, I know I could
     // terminate the JS code by using exit(), but in this way I will forcing the salad and go to the end.
     if (orderType == null || orderType == undefined || orderType == "" || orderType >= 4) {
-      alert(`Since you didn't choose, we'll pick for you the fastest option, which is Salad.`)
+      alert(`Since you didn't pick a valid option, we'll pick for you the fastest option, which is Salad.`)
       orderType = 3; 
       text = "Nice, we got plenty of healthy options.";
       selectedType = ["Salad", "Greek Salad", "Protein Salad", "Tuna Salad", "7 min"];
@@ -71,13 +67,21 @@ let subOrderType = prompt(`
   ${selectedType[3]} (3)
   Which one would you like? - Enter the number below.`);
 
+// Adding these conditionals again, to prevent the code to stop or broke if a bad value or "cancel" is being pressed.
+if (subOrderType == null || subOrderType == undefined || subOrderType == "" || subOrderType >= 4) {
+  alert(`You entered an invalid choice, so we'll go for the first option: ${selectedType[1]}`);
+  subOrderType = 1;
+};
+
 // Step 4 - Age
 // Your code goes here
-const ageOrder = prompt(`You're gonna order ${selectedType[subOrderType]}. 
+let ageOrder = prompt(`You're gonna order ${selectedType[subOrderType]}. 
 Now we only need your age in order to give you a normal portion or a baby one. 
 Type it here below:`);
 
-if(ageOrder >= 18) {
+// Same conditional here, a lil bit coumbersome, maybe there's something easier that can be done. 
+//Like what parameters can be accepted, or not etc.
+if(ageOrder >= 18 || ageOrder == null || ageOrder == undefined || ageOrder == "") {
   alert(`You will get a normal portion size of ${selectedType[0]} ${selectedType[subOrderType]}. 
   Click OK to receive you order confirmation.`);
 } else {
@@ -88,4 +92,4 @@ if(ageOrder >= 18) {
 // Step 5 - Order confirmation
 // Your code goes here
 alert(`${orderName}, we got your order. 
-You will get your ${selectedType[0]} ${selectedType[subOrderType]} in about ${selectedType[4]}`);
+You will get your ${selectedType[0]}: "${selectedType[subOrderType]}" in about ${selectedType[4]}!`);
